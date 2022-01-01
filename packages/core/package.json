@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "Dhruv Kelawala <dhruvrk2000@gmail.com>",
   "main": "dist/index.js",
   "module": "dist/core.esm.js",
@@ -32,8 +32,8 @@
     "trailingComma": "es5"
   },
   "dependencies": {
-    "@web3-starknet-react/abstract-connector": "^0.1.3",
-    "@web3-starknet-react/types": "^0.1.3"
+    "@web3-starknet-react/abstract-connector": "^0.1.4",
+    "@web3-starknet-react/types": "^0.1.4"
   },
   "gitHead": "ff48d9180562bf69cd7746a0a872dd1a37f044c9"
 }
