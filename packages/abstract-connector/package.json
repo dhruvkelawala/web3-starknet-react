@@ -1,0 +1,35 @@
+{
+  "name": "@web3-starknet-react/abstract-connector",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "dhruvkelawala",
+  "main": "dist/index.js",
+  "module": "dist/abstract-connector.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --env=jsdom",
+    "lint": "tsdx lint"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "dependencies": {
+    "@web3-starknet-react/types": "0.1.0"
+  }
+}

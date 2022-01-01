@@ -1,0 +1,27 @@
+{
+  "name": "@web3-starknet-react/types",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.1.0",
+  "author": "Dhruv Kelawala <dhruvrk2000@gmail.com>",
+  "main": "dist/index.js",
+  "module": "dist/types.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --env=jsdom",
+    "lint": "tsdx lint"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dhruvkelawala/web3-starknet-react.git"
+  }
+}
