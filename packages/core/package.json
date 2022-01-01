@@ -1,6 +1,6 @@
 {
   "name": "core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "author": "dhruvkelawala",
   "main": "dist/index.js",
@@ -30,7 +30,7 @@
     "trailingComma": "es5"
   },
   "dependencies": {
-    "@web3-starknet-react/abstract-connector": "^0.1.1",
-    "@web3-starknet-react/types": "^0.1.1"
+    "@web3-starknet-react/abstract-connector": "^0.1.2",
+    "@web3-starknet-react/types": "^0.1.2"
   }
 }
