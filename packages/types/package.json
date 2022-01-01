@@ -23,5 +23,6 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/dhruvkelawala/web3-starknet-react.git"
-  }
+  },
+  "gitHead": "30f49c8086a6ba1342c33e53d4a25f29fa7385cd"
 }

@@ -1,8 +1,10 @@
 {
   "name": "@web3-starknet-react/abstract-connector",
   "version": "0.1.2",
-  "license": "MIT",
-  "author": "dhruvkelawala",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Dhruv Kelawala <dhruvrk2000@gmail.com>",
   "main": "dist/index.js",
   "module": "dist/abstract-connector.esm.js",
   "typings": "dist/index.d.ts",
@@ -31,5 +33,6 @@
   },
   "dependencies": {
     "@web3-starknet-react/types": "^0.1.2"
-  }
+  },
+  "gitHead": "30f49c8086a6ba1342c33e53d4a25f29fa7385cd"
 }
