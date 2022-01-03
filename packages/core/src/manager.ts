@@ -4,8 +4,8 @@ import { useReducer, useEffect, useCallback, useRef } from 'react';
 import { ConnectorUpdate, ConnectorEvent } from '@web3-starknet-react/types';
 import warning from 'tiny-warning';
 
-import { StarknetReactManagerReturn } from 'types';
-import { normalizeAccount, normalizeChainId } from 'normalizers';
+import { StarknetReactManagerReturn } from './types';
+import { normalizeAccount, normalizeChainId } from './normalizers';
 
 class StaleConnectorError extends Error {
   constructor() {
