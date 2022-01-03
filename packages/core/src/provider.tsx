@@ -2,7 +2,7 @@ import React, { createContext, useContext, useMemo } from 'react';
 import invariant from 'tiny-invariant';
 
 import { StarknetReactContextInterface } from './types';
-import { useStarknetReactManager } from 'manager';
+import { useStarknetReactManager } from './manager';
 import { Provider } from 'starknet';
 
 export const PRIMARY_KEY = 'primary';
