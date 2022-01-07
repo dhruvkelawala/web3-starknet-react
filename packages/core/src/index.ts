@@ -6,3 +6,4 @@ export {
   PRIMARY_KEY,
 } from './provider';
 export { UnsupportedChainIdError } from './manager';
+export { normalizeAccount, normalizeChainId } from './normalizers';
