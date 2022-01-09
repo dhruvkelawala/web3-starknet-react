@@ -3,7 +3,6 @@ import {
   AbstractConnectorArguments,
   ConnectorUpdate,
 } from '@web3-starknet-react/types';
-import { getStarknet } from '@argent/get-starknet';
 import type { StarknetWindowObject } from './types';
 
 export class NoStarknetProviderError extends Error {
@@ -101,8 +100,8 @@ export class ArgentXConnector extends AbstractConnector {
     if (!window.starknet) {
       return false;
     } else {
-      this.starknet = getStarknet({ showModal: false });
-      const [account] = await this.starknet.enable();
+      const account = window.starknet.selectedAddress
+     
 
       return !!account;
     }

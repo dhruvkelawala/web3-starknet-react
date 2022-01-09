@@ -32,7 +32,6 @@
     "trailingComma": "es5"
   },
   "dependencies": {
-    "@argent/get-starknet": "^0.1.4",
     "@web3-starknet-react/abstract-connector": "^0.2.0",
     "@web3-starknet-react/types": "^0.2.0"
   },
