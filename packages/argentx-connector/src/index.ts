@@ -24,17 +24,23 @@ export class ArgentXConnector extends AbstractConnector {
   }
 
   public async activate(): Promise<ConnectorUpdate> {
+    let account;
+
     if (!this.starknet) {
       this.starknet = getStarknet({ showModal: false });
+
+      try {
+        [account] = await this.starknet.enable();
+        // console.log('Account type: ', account.substring(2).length);
+      } catch (error) {
+        console.log(error);
+        throw new NoStarknetProviderError();
+      }
     }
 
     if (window.starknet?.on) {
       window.starknet.on('accountsChanged', this.handleAccountsChanged);
     }
-
-    const [account] = await this.starknet.enable();
-
-    console.log('Account type: ', account.substring(2).length);
 
     // const { ...provider } = this.starknet.signer;
 
