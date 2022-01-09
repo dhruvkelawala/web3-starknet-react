@@ -4,7 +4,7 @@ import {
   ConnectorUpdate,
 } from '@web3-starknet-react/types';
 import { getStarknet } from '@argent/get-starknet';
-import { StarknetWindowObject } from './types';
+import type { StarknetWindowObject } from './types';
 
 export class NoStarknetProviderError extends Error {
   public constructor() {
@@ -24,18 +24,9 @@ export class ArgentXConnector extends AbstractConnector {
   }
 
   public async activate(): Promise<ConnectorUpdate> {
-    let account;
 
-    if (!this.starknet) {
-      this.starknet = getStarknet({ showModal: false });
-
-      try {
-        [account] = await this.starknet.enable();
-        // console.log('Account type: ', account.substring(2).length);
-      } catch (error) {
-        console.log(error);
-        throw new NoStarknetProviderError();
-      }
+    if (!window.starknet) {
+      throw new NoStarknetProviderError()
     }
 
     if (window.starknet?.on) {
@@ -44,8 +35,22 @@ export class ArgentXConnector extends AbstractConnector {
 
     // const { ...provider } = this.starknet.signer;
 
+    let account;
+
+    try {
+      account = window.starknet.selectedAddress
+    } catch (error) {
+      console.error(error)
+    }
+
+    if (!account) {
+      [account] = await window.starknet.enable()
+    }
+
+
+
     return {
-      provider: this.starknet.signer,
+      provider: window.starknet.provider,
       chainId: 5,
       ...(account ? { account } : {}),
     };
