@@ -87,10 +87,10 @@ export class ArgentXConnector extends AbstractConnector {
   }
 
   public async isAuthorized(): Promise<boolean> {
-    if (this.starknet) {
-      return this.starknet.isConnected;
+    if (!window.starknet) {
+      return false;
     } else {
-      this.starknet = getStarknet({ showModal: false });
+      this.starknet = getStarknet({ showModal: true });
       const [account] = await this.starknet.enable();
 
       return !!account;
