@@ -25,7 +25,7 @@ export class ArgentXConnector extends AbstractConnector {
 
   public async activate(): Promise<ConnectorUpdate> {
     if (!this.starknet) {
-      this.starknet = getStarknet({ showModal: true });
+      this.starknet = getStarknet({ showModal: false });
     }
 
     if (window.starknet?.on) {
