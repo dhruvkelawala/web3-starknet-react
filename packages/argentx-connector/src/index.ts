@@ -90,7 +90,7 @@ export class ArgentXConnector extends AbstractConnector {
     if (!window.starknet) {
       return false;
     } else {
-      this.starknet = getStarknet({ showModal: true });
+      this.starknet = getStarknet({ showModal: false });
       const [account] = await this.starknet.enable();
 
       return !!account;
