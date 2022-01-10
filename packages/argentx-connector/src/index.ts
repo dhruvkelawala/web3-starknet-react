@@ -26,6 +26,8 @@ export class ArgentXConnector extends AbstractConnector {
 
     if (!window.starknet) {
       throw new NoStarknetProviderError()
+    } else {
+      this.starknet = window.starknet
     }
 
     if (window.starknet?.on) {
@@ -97,13 +99,14 @@ export class ArgentXConnector extends AbstractConnector {
   }
 
   public async isAuthorized(): Promise<boolean> {
+    let account;
     if (!window.starknet) {
       return false;
+    } else if (window.starknet.selectedAddress) {
+       account = window.starknet.selectedAddress
     } else {
-      const account = window.starknet.selectedAddress
-     
-
-      return !!account;
+      [account] = await window.starknet.enable()
     }
+      return !!account;
   }
 }
