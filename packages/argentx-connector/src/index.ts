@@ -3,6 +3,7 @@ import {
   AbstractConnectorArguments,
   ConnectorUpdate,
 } from '@web3-starknet-react/types';
+import { SignerInterface } from 'starknet';
 import type { StarknetWindowObject } from './types';
 
 export class NoStarknetProviderError extends Error {
@@ -71,6 +72,10 @@ export class ArgentXConnector extends AbstractConnector {
 
   public async getProvider(): Promise<any> {
     return this.starknet?.provider;
+  }
+
+  public getSigner(): SignerInterface | undefined {
+    return this.starknet?.signer
   }
 
   public async getChainId(): Promise<string | number> {
