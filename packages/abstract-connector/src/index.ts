@@ -4,7 +4,7 @@ import {
   ConnectorEvent,
   ConnectorUpdate,
 } from '@web3-starknet-react/types';
-import { Provider } from 'starknet';
+import { Provider, SignerInterface } from 'starknet';
 
 export abstract class AbstractConnector extends EventEmitter {
   public readonly supportedChainIds?: number[];
@@ -17,6 +17,7 @@ export abstract class AbstractConnector extends EventEmitter {
 
   public abstract activate(): Promise<ConnectorUpdate>;
   public abstract getProvider(): Promise<Provider>;
+  public abstract getSigner(): SignerInterface | undefined;
   public abstract getChainId(): Promise<number | string>;
   public abstract getAccount(): Promise<null | string>;
   public abstract deactivate(): void;
