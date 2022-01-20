@@ -51,7 +51,7 @@ export class ArgentXConnector extends AbstractConnector {
 
 
     return {
-      provider: window.starknet.provider,
+      provider: window.starknet.signer,
       chainId: 5,
       ...(account ? { account } : {}),
     };
