@@ -1,5 +1,5 @@
 import { AbstractConnector } from '@web3-starknet-react/abstract-connector';
-import { Provider } from 'starknet';
+import { Provider } from '@jediswap/starknet';
 
 export interface StarknetReactManagerFunction {
   activate: (

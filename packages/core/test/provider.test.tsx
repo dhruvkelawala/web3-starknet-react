@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { StarknetReactProvider } from '../src/provider';
-import { Provider } from 'starknet';
+import { Provider } from '@jediswap/starknet';
 
 function getLibrary(provider?: Provider) {
   const library = new Provider(provider);

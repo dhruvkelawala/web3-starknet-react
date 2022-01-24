@@ -3,7 +3,7 @@ import {
   AbstractConnectorArguments,
   ConnectorUpdate,
 } from '@web3-starknet-react/types';
-import { SignerInterface } from 'starknet';
+import { SignerInterface } from '@jediswap/starknet';
 import type { StarknetWindowObject } from './types';
 
 export class NoStarknetProviderError extends Error {

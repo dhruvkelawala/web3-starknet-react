@@ -1,5 +1,5 @@
 import { AbstractConnector } from '@web3-starknet-react/abstract-connector';
-import { Provider } from 'starknet';
+import { Provider } from '@jediswap/starknet';
 import { useReducer, useEffect, useCallback, useRef } from 'react';
 import { ConnectorUpdate, ConnectorEvent } from '@web3-starknet-react/types';
 import warning from 'tiny-warning';

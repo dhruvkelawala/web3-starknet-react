@@ -3,7 +3,7 @@ import invariant from 'tiny-invariant';
 
 import { StarknetReactContextInterface } from './types';
 import { useStarknetReactManager } from './manager';
-import { Provider } from 'starknet';
+import { Provider } from '@jediswap/starknet';
 
 export const PRIMARY_KEY = 'primary';
 

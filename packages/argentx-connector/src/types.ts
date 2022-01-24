@@ -5,14 +5,14 @@ interface IStarknetWindowObject {
   enable: () => Promise<string[]>;
   on: (method: 'accountsChanged', handleEvent: EventHandler) => void;
   off: (event: 'accountsChanged', handleEvent: EventHandler) => void;
-  signer?: import('starknet').SignerInterface;
-  provider: import('starknet').Provider;
+  signer?: import('@jediswap/starknet').SignerInterface;
+  provider: import('@jediswap/starknet').Provider;
   selectedAddress?: string;
 }
 
 interface ConnectedStarknetWindowObject extends IStarknetWindowObject {
   isConnected: true;
-  signer: import('starknet').SignerInterface;
+  signer: import('@jediswap/starknet').SignerInterface;
   selectedAddress: string;
 }
 

@@ -1,4 +1,4 @@
-import { Provider } from 'starknet'
+import { Provider } from '@jediswap/starknet'
 
 export interface AbstractConnectorArguments {
   supportedChainIds?: number[]
