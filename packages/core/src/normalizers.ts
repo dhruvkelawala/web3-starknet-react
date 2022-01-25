@@ -1,4 +1,5 @@
 import invariant from 'tiny-invariant';
+import { validateAndParseAddress } from '@jediswap/starknet';
 
 export function normalizeChainId(chainId: string | number): number {
   if (typeof chainId === 'string') {
@@ -22,14 +23,8 @@ export function normalizeChainId(chainId: string | number): number {
   }
 }
 
-export function normalizeAccount(_address: string): string {
-  invariant(
-    typeof _address === 'string' && _address.match(/^(0x)?[0-9a-fA-F]{63}$/),
-    `Invalid address ${_address}`
-  );
+export function normalizeAccount(address: string): string {
+  const starknetAddress = validateAndParseAddress(address);
 
-  const address =
-    _address.substring(0, 2) === '0x' ? _address : `0x${_address}`;
-
-  return address;
+  return starknetAddress;
 }

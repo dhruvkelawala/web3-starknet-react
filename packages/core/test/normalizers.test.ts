@@ -1,16 +1,14 @@
 import { normalizeAccount } from '../src/normalizers';
 
 describe('normalizers test', () => {
-  it('checks normalizer account', () => {
+  it('checks if normalizeAcccount works with 64bit address string', () => {
     let account =
-      '0x7a41b26633a8501dcb79c4181b84c8d0e581d69020317d0edd2b580d15c926d';
+      '0x6eff1d71068df8e6677f59a556151c56ed13e14ad431a9bef6fcb3fc5e6fa7';
 
-    console.log(account);
+    const normalizedAccount = normalizeAccount(account);
 
-    const _account = normalizeAccount(account);
-
-    console.log(_account);
-
-    expect(account === _account);
+    expect(normalizedAccount).toBe(
+      '0x006eff1d71068df8e6677f59a556151c56ed13e14ad431a9bef6fcb3fc5e6fa7'
+    );
   });
 });
