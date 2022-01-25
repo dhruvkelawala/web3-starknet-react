@@ -998,10 +998,10 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@jediswap/starknet@^2.7.1":
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/@jediswap/starknet/-/starknet-2.7.1.tgz#5ced80b3345fdcd886cf6230f03bb37dbf2a52bb"
-  integrity sha512-BXTxdjuQEFuLBIwAJmwRzbhl8UujCrtn5C0ui5ySgScsMqNcKimdjthPM3MR2klpWqWgAuMXeydV7pBKhOS7yA==
+"@jediswap/starknet@^2.7.2":
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/@jediswap/starknet/-/starknet-2.7.2.tgz#826bdd04739ddc6b5d04e2cb9e223754d201a5bc"
+  integrity sha512-pyG+iZuMCruDJlf6cQ+Of6T3oPmEzc8rYG2wG7c4xoNliESmys33DqSAORp2SWPTSXN2rUODbVzQKfpZtRzh7Q==
   dependencies:
     axios "^0.23.0"
     bn.js "^5.2.0"
@@ -8393,22 +8393,6 @@ stack-utils@^1.0.1:
   integrity sha512-KZiTzuV3CnSnSvgMRrARVCj+Ht7rMbauGDK0LdVFRGyenwdylpajAp4Q0i6SX8rEmbTpMMf6ryq2gb8pPq2WgQ==
   dependencies:
     escape-string-regexp "^2.0.0"
-
-starknet@^2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/starknet/-/starknet-2.7.1.tgz#722077230dc932093a9009587bb049945e035bfa"
-  integrity sha512-R1AjCLb3NR8ZJadw/6xYfJELwVsjLJ0lXopMpzoepr2Tv4amjKc6XlGaFirKJ154MC09Y8fN+qw9t3VycKZbgg==
-  dependencies:
-    axios "^0.23.0"
-    bn.js "^5.2.0"
-    elliptic "^6.5.4"
-    ethereum-cryptography "^0.2.0"
-    hash.js "^1.1.7"
-    json-bigint "^1.0.0"
-    minimalistic-assert "^1.0.1"
-    pako "^2.0.4"
-    superstruct "^0.15.3"
-    url-join "^4.0.1"
 
 static-extend@^0.1.1:
   version "0.1.2"

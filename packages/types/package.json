@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "Dhruv Kelawala <dhruvrk2000@gmail.com>",
   "main": "dist/index.js",
   "module": "dist/types.esm.js",
