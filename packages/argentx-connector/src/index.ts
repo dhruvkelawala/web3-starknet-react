@@ -99,7 +99,7 @@ export class ArgentXConnector extends AbstractConnector {
 
   public deactivate(): void {
     if (this.starknet) {
-      this.starknet.off('accountsChanged', this.handleAccountsChanged);
+      this.handleAccountsChanged([])
     }
   }
 
