@@ -1,6 +1,6 @@
 {
   "name": "@web3-starknet-react/abstract-connector",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "publishConfig": {
     "access": "public"
   },
