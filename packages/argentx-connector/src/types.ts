@@ -1,5 +1,21 @@
 export type EventHandler = (accounts: string[]) => void;
 
+interface WatchAssetParameters {
+  type: 'ERC20'; // The asset's interface, e.g. 'ERC20'
+  options: {
+    address: string; // The hexadecimal StarkNet address of the token contract
+    symbol?: string; // A ticker symbol or shorthand, up to 5 alphanumerical characters
+    decimals?: number; // The number of asset decimals
+    image?: string; // A string url of the token logo
+    name?: string; // The name of the token - not in spec
+  };
+}
+
+export type RpcMessage = {
+  type: 'wallet_watchAsset';
+  params: WatchAssetParameters;
+};
+
 // eslint-disable-next-line @typescript-eslint/interface-name-prefix
 interface IStarknetWindowObject {
   enable: () => Promise<string[]>;
@@ -8,7 +24,7 @@ interface IStarknetWindowObject {
   signer?: import('@jediswap/starknet').SignerInterface;
   provider: import('@jediswap/starknet').Provider;
   selectedAddress?: string;
-  request: () => Promise<void>;
+  request: (call: RpcMessage) => Promise<void>;
 }
 
 interface ConnectedStarknetWindowObject extends IStarknetWindowObject {
