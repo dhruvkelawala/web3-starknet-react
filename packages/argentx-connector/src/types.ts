@@ -8,7 +8,6 @@ interface IStarknetWindowObject {
   signer?: import('@jediswap/starknet').SignerInterface;
   provider: import('@jediswap/starknet').Provider;
   selectedAddress?: string;
-  request: () => Promise<void>;
 }
 
 interface ConnectedStarknetWindowObject extends IStarknetWindowObject {
