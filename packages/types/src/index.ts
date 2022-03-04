@@ -1,4 +1,4 @@
-import { Provider } from '@jediswap/starknet'
+import { AccountInterface, Provider } from 'starknet'
 
 export interface AbstractConnectorArguments {
   supportedChainIds?: number[]
@@ -7,7 +7,8 @@ export interface AbstractConnectorArguments {
 export interface ConnectorUpdate<T = number | string> {
   provider?: Provider
   chainId?: T
-  account?: null | string
+  account?: AccountInterface | null
+  connectedAddress?: string | null
 }
 
 export enum ConnectorEvent {

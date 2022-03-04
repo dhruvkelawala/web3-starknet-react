@@ -17,19 +17,31 @@ export type RpcMessage = {
 };
 
 // eslint-disable-next-line @typescript-eslint/interface-name-prefix
+// interface IStarknetWindowObject {
+//   enable: () => Promise<string[]>;
+//   on: (method: 'accountsChanged', handleEvent: EventHandler) => void;
+//   off: (event: 'accountsChanged', handleEvent: EventHandler) => void;
+//   signer?: import('@jediswap/starknet').SignerInterface;
+//   provider: import('@jediswap/starknet').Provider;
+//   selectedAddress?: string;
+//   request: (call: RpcMessage) => Promise<void>;
+// }
+
 interface IStarknetWindowObject {
-  enable: () => Promise<string[]>;
-  on: (method: 'accountsChanged', handleEvent: EventHandler) => void;
-  off: (event: 'accountsChanged', handleEvent: EventHandler) => void;
-  signer?: import('@jediswap/starknet').SignerInterface;
-  provider: import('@jediswap/starknet').Provider;
-  selectedAddress?: string;
   request: (call: RpcMessage) => Promise<void>;
+  enable: (options?: { showModal?: boolean }) => Promise<string[]>;
+  isPreauthorized: () => Promise<boolean>;
+  on: (event: 'accountsChanged', handleEvent: EventHandler) => void;
+  off: (event: 'accountsChanged', handleEvent: EventHandler) => void;
+  account?: import('starknet').AccountInterface;
+  provider: import('starknet').Provider;
+  selectedAddress?: string;
+  version: string;
 }
 
 interface ConnectedStarknetWindowObject extends IStarknetWindowObject {
   isConnected: true;
-  signer: import('@jediswap/starknet').SignerInterface;
+  signer: import('starknet').SignerInterface;
   selectedAddress: string;
 }
 

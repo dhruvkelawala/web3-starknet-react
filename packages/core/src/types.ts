@@ -1,5 +1,5 @@
 import { AbstractConnector } from '@web3-starknet-react/abstract-connector';
-import { Provider } from '@jediswap/starknet';
+import { Provider, AccountInterface } from 'starknet';
 
 export interface StarknetReactManagerFunction {
   activate: (
@@ -16,7 +16,8 @@ export interface StarknetReactManagerReturn
   connector?: AbstractConnector;
   provider?: Provider;
   chainId?: number;
-  account?: null | string;
+  account?: AccountInterface | null;
+  connectedAddress?: string | null;
 
   error?: Error;
 }
@@ -26,7 +27,8 @@ export interface StarknetReactContextInterface<T = any>
   connector?: AbstractConnector;
   library?: T;
   chainId?: number;
-  account?: string | null;
+  account?: AccountInterface | null;
+  connectedAddress?: string | null;
 
   active: boolean;
   error?: Error;

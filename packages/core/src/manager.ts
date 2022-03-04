@@ -1,5 +1,5 @@
 import { AbstractConnector } from '@web3-starknet-react/abstract-connector';
-import { Provider } from '@jediswap/starknet';
+import { AccountInterface, Provider } from 'starknet';
 import { useReducer, useEffect, useCallback, useRef } from 'react';
 import { ConnectorUpdate, ConnectorEvent } from '@web3-starknet-react/types';
 import warning from 'tiny-warning';
@@ -29,7 +29,8 @@ interface StarknetReactManagerState {
   connector?: AbstractConnector;
   provider?: Provider;
   chainId?: number;
-  account?: null | string;
+  account?: AccountInterface | null;
+  connectedAddress?: string | null;
 
   onError?: (error: Error | unknown) => void;
 
@@ -56,25 +57,41 @@ function reducer(
 ): StarknetReactManagerState {
   switch (type) {
     case ActionType.ACTIVATE_CONNECTOR: {
-      const { connector, provider, chainId, account, onError } = payload;
-      return { connector, provider, chainId, account, onError };
+      const {
+        connector,
+        provider,
+        chainId,
+        account,
+        connectedAddress,
+        onError,
+      } = payload;
+      return {
+        connector,
+        provider,
+        chainId,
+        account,
+        connectedAddress,
+        onError,
+      };
     }
     case ActionType.UPDATE: {
-      const { provider, chainId, account } = payload;
+      const { provider, chainId, account, connectedAddress } = payload;
       return {
         ...state,
         ...(provider === undefined ? {} : { provider }),
         ...(chainId === undefined ? {} : { chainId }),
         ...(account === undefined ? {} : { account }),
+        ...(connectedAddress === undefined ? {} : { connectedAddress }),
       };
     }
     case ActionType.UPDATE_FROM_ERROR: {
-      const { provider, chainId, account } = payload;
+      const { provider, chainId, account, connectedAddress } = payload;
       return {
         ...state,
         ...(provider === undefined ? {} : { provider }),
         ...(chainId === undefined ? {} : { chainId }),
         ...(account === undefined ? {} : { account }),
+        ...(connectedAddress === undefined ? {} : { connectedAddress }),
         error: undefined,
       };
     }
@@ -108,12 +125,16 @@ async function augmentConnectorUpdate(
     update.provider === undefined
       ? await connector.getProvider()
       : update.provider;
-  const [_chainId, _account] = (await Promise.all([
+  const [_chainId, _account, _connectedAddress] = (await Promise.all([
     update.chainId === undefined ? connector.getChainId() : update.chainId,
     update.account === undefined ? connector.getAccount() : update.account,
+    update.connectedAddress === undefined
+      ? connector.getConnectedAddress()
+      : update.connectedAddress,
   ])) as [
     Required<ConnectorUpdate>['chainId'],
-    Required<ConnectorUpdate>['account']
+    Required<ConnectorUpdate>['account'],
+    Required<ConnectorUpdate>['connectedAddress']
   ];
 
   const chainId = normalizeChainId(_chainId);
@@ -123,14 +144,30 @@ async function augmentConnectorUpdate(
   ) {
     throw new UnsupportedChainIdError(chainId, connector.supportedChainIds);
   }
-  const account = _account === null ? _account : normalizeAccount(_account);
+  const connectedAddress =
+    _connectedAddress === null
+      ? _connectedAddress
+      : normalizeAccount(_connectedAddress);
 
-  return { provider, chainId, account };
+  return {
+    provider,
+    chainId,
+    account: _account,
+    connectedAddress,
+  };
 }
 
 export function useStarknetReactManager(): StarknetReactManagerReturn {
   const [state, dispatch] = useReducer(reducer, {});
-  const { connector, provider, chainId, account, onError, error } = state;
+  const {
+    connector,
+    provider,
+    chainId,
+    account,
+    connectedAddress,
+    onError,
+    error,
+  } = state;
 
   const updateBusterRef = useRef(-1);
   updateBusterRef.current += 1;
@@ -220,13 +257,18 @@ export function useStarknetReactManager(): StarknetReactManagerReturn {
             ? onError(error)
             : dispatch({ type: ActionType.ERROR, payload: { error } });
         } else {
-          const account =
-            typeof update.account === 'string'
-              ? normalizeAccount(update.account)
-              : update.account;
+          const connectedAddress =
+            typeof update.connectedAddress === 'string'
+              ? normalizeAccount(update.connectedAddress)
+              : update.connectedAddress;
           dispatch({
             type: ActionType.UPDATE,
-            payload: { provider: update.provider, chainId, account },
+            payload: {
+              provider: update.provider,
+              account: update.account,
+              connectedAddress,
+              chainId,
+            },
           });
         }
       } else {
@@ -305,6 +347,7 @@ export function useStarknetReactManager(): StarknetReactManagerReturn {
     provider,
     chainId,
     account,
+    connectedAddress,
     activate,
     setError,
     deactivate,

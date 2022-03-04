@@ -1,5 +1,5 @@
 import invariant from 'tiny-invariant';
-import { validateAndParseAddress } from '@jediswap/starknet';
+import { validateAndParseAddress } from 'starknet';
 
 export function normalizeChainId(chainId: string | number): number {
   if (typeof chainId === 'string') {

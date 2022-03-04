@@ -3,8 +3,7 @@ import {
   AbstractConnectorArguments,
   ConnectorUpdate,
 } from '@web3-starknet-react/types';
-import { SignerInterface } from '@jediswap/starknet';
-import type { StarknetWindowObject } from './types';
+import { AccountInterface } from 'starknet';
 
 export class NoStarknetProviderError extends Error {
   public constructor() {
@@ -15,8 +14,6 @@ export class NoStarknetProviderError extends Error {
 }
 
 export class ArgentXConnector extends AbstractConnector {
-  public starknet: StarknetWindowObject | undefined;
-
   constructor(kwargs: AbstractConnectorArguments) {
     super(kwargs);
 
@@ -24,62 +21,72 @@ export class ArgentXConnector extends AbstractConnector {
   }
 
   public async activate(): Promise<ConnectorUpdate> {
-
     if (!window.starknet) {
-      throw new NoStarknetProviderError()
-    } else {
-      this.starknet = window.starknet
+      throw new NoStarknetProviderError();
     }
-
     if (window.starknet?.on) {
       window.starknet.on('accountsChanged', this.handleAccountsChanged);
     }
 
     // const { ...provider } = this.starknet.signer;
 
-    let account;
+    let account: AccountInterface | undefined, connectedAddress;
 
     try {
-      account = window.starknet.selectedAddress
+      const isPreAuthorized = await window.starknet.isPreauthorized();
+
+      if (isPreAuthorized) {
+        connectedAddress = window.starknet.selectedAddress;
+        account = window.starknet.account;
+      } else {
+        [connectedAddress] = await window.starknet.enable();
+        account = window.starknet.account;
+      }
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-
-    if (!account) {
-      [account] = await window.starknet.enable()
-    }
-
-
 
     return {
       provider: window.starknet.provider,
       chainId: 5,
       ...(account ? { account } : {}),
+      ...(connectedAddress ? { connectedAddress } : {}),
     };
   }
 
-  private handleAccountsChanged(accounts: string[]) {
+  private handleAccountsChanged(accountAddresses: string[]) {
     if (__DEV__) {
-      console.log("Handling 'accountsChanged' event with payload", accounts);
+      console.log(
+        "Handling 'accountsChanged' event with payload",
+        accountAddresses
+      );
     }
 
-    if (accounts.length === 0) {
+    if (accountAddresses.length === 0) {
       this.emitDeactivate();
     } else {
-      this.emitUpdate({ account: accounts[0] });
+      this.emitUpdate({ connectedAddress: accountAddresses[0] });
     }
   }
 
   public async getProvider(): Promise<any> {
-    return this.starknet?.provider;
+    return window.starknet?.provider;
   }
 
-  public getSigner(): SignerInterface | undefined {
-    return this.starknet?.signer
+  /**
+   * @deprecated Use getAccount()
+   * @returns AccountInterface
+   */
+  public getSigner(): AccountInterface | undefined {
+    if (!window.starknet) {
+      throw new NoStarknetProviderError();
+    }
+
+    return window.starknet.account;
   }
 
   public async getChainId(): Promise<string | number> {
-    if (!this.starknet) {
+    if (!window.starknet) {
       throw new NoStarknetProviderError();
     }
 
@@ -87,31 +94,41 @@ export class ArgentXConnector extends AbstractConnector {
     return 5;
   }
 
-  public async getAccount(): Promise<string | null> {
-    if (!this.starknet) {
+  public getAccount(): AccountInterface | undefined {
+    if (!window.starknet) {
       throw new NoStarknetProviderError();
     }
 
-    const account = this.starknet.selectedAddress;
+    return window.starknet.account;
+  }
 
-    return account ? account : null;
+  public getConnectedAddress(): string | null {
+    if (!window.starknet) {
+      throw new NoStarknetProviderError();
+    }
+
+    const address = window.starknet.selectedAddress;
+
+    return address ? address : null;
   }
 
   public deactivate(): void {
-    if (this.starknet) {
-      this.handleAccountsChanged([])
+    if (window.starknet) {
+      this.handleAccountsChanged([]);
     }
   }
 
   public async isAuthorized(): Promise<boolean> {
-    let account;
+    // let account;
     if (!window.starknet) {
       return false;
-    } else if (window.starknet.selectedAddress) {
-       account = window.starknet.selectedAddress
-    } else {
-      [account] = await window.starknet.enable()
     }
-      return !!account;
+    // } else if (window.starknet.selectedAddress) {
+    //    account = window.starknet.selectedAddress
+    // } else {
+    //   [account] = await window.starknet.enable()
+    // }
+
+    return await window.starknet.isPreauthorized();
   }
 }

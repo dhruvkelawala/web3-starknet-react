@@ -3,7 +3,7 @@ import invariant from 'tiny-invariant';
 
 import { StarknetReactContextInterface } from './types';
 import { useStarknetReactManager } from './manager';
-import { Provider } from '@jediswap/starknet';
+import { Provider } from 'starknet';
 
 export const PRIMARY_KEY = 'primary';
 
@@ -50,6 +50,7 @@ export function createStarknetReactRoot(
       provider,
       chainId,
       account,
+      connectedAddress,
       activate,
       setError,
       deactivate,
@@ -81,6 +82,7 @@ export function createStarknetReactRoot(
       deactivate,
       setError,
       account,
+      connectedAddress,
       chainId,
       error,
     };
