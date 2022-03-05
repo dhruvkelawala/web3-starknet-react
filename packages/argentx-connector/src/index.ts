@@ -44,6 +44,8 @@ export class ArgentXConnector extends AbstractConnector {
       }
     } catch (error) {
       console.error(error);
+      this.emitError(new Error(`Connection failed: ${error}`));
+      throw error;
     }
 
     return {
