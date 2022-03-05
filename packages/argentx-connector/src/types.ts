@@ -41,7 +41,7 @@ interface IStarknetWindowObject {
 
 interface ConnectedStarknetWindowObject extends IStarknetWindowObject {
   isConnected: true;
-  signer: import('starknet').SignerInterface;
+  account: import('starknet').AccountInterface;
   selectedAddress: string;
 }
 
