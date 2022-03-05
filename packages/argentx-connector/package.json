@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.5.5",
+  "version": "1.0.0",
   "author": "Dhruv Kelawala <dhruvrk2000@gmail.com>",
   "main": "dist/index.js",
   "module": "dist/argentx-connector.esm.js",
@@ -32,8 +32,8 @@
     "trailingComma": "es5"
   },
   "dependencies": {
-    "@web3-starknet-react/abstract-connector": "^0.5.1",
-    "@web3-starknet-react/types": "^0.5.0"
+    "@web3-starknet-react/abstract-connector": "^1.0.0",
+    "@web3-starknet-react/types": "^1.0.0"
   },
   "gitHead": "b893495a21b7d761d895aac9e89666875c315e7b"
 }
