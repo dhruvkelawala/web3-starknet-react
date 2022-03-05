@@ -32,20 +32,14 @@ export class ArgentXConnector extends AbstractConnector {
 
     let account: AccountInterface | undefined, connectedAddress;
 
-    try {
-      const isPreAuthorized = await window.starknet.isPreauthorized();
+    // const isPreAuthorized = await window.starknet.isPreauthorized();
 
-      if (isPreAuthorized) {
-        connectedAddress = window.starknet.selectedAddress;
-        account = window.starknet.account;
-      } else {
-        [connectedAddress] = await window.starknet.enable();
-        account = window.starknet.account;
-      }
-    } catch (error) {
-      console.error(error);
-      this.emitError(new Error(`Connection failed: ${error}`));
-      throw error;
+    connectedAddress = window.starknet.selectedAddress;
+    account = window.starknet.account;
+
+    if (!account) {
+      [connectedAddress] = await window.starknet.enable();
+      account = window.starknet.account;
     }
 
     return {
@@ -121,16 +115,15 @@ export class ArgentXConnector extends AbstractConnector {
   }
 
   public async isAuthorized(): Promise<boolean> {
-    // let account;
+    let account;
     if (!window.starknet) {
       return false;
+    } else if (window.starknet.selectedAddress) {
+      account = window.starknet.selectedAddress;
+    } else {
+      [account] = await window.starknet.enable();
     }
-    // } else if (window.starknet.selectedAddress) {
-    //    account = window.starknet.selectedAddress
-    // } else {
-    //   [account] = await window.starknet.enable()
-    // }
 
-    return await window.starknet.isPreauthorized();
+    return !!account;
   }
 }
