@@ -22,7 +22,7 @@ _Provides easy access to Starknet Interface all over the React App. Inspired fro
 
 <br />
 
----
+#
 
 ## ⭐️ [Documentation](docs)
 
