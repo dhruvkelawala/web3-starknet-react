@@ -25,4 +25,4 @@ interface StarknetReactContextInterface<T = any> {
 }
 ```
 
-The documentation that follows isfor `@web3-starknet-react/core`, the package responsible for managing this context. To understand where data itself comes from, head over to the [connectors/folder](connectors/)
+The documentation that follows is for `@web3-starknet-react/core`, the package responsible for managing this context. To understand where data itself comes from, head over to the [connectors/folder](connectors/)
