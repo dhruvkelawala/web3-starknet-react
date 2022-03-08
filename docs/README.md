@@ -1,3 +1,24 @@
+# `web3-starknet-react` Documentation
+
+- [Overview](#overview)
+- [Install](#install)
+- [web3-starknet-react@core API Reference](#web3-starknet-reactcore-api-reference)
+  - [StarknetReactProvider](#starknetreactprovider)
+    - [Props](#props)
+    - [Example](#example)
+  - [useStarknetReact](#usestarknetreact)
+    - [Arguments](#arguments)
+    - [Example](#example-1)
+  - [createStarknetReactRoot](#createstarknetreactroot)
+    - [Arguments](#arguments-1)
+    - [Example](#example-2)
+  - [getStarknetReactContext](#getstarknetreactcontext)
+    - [Arguments](#arguments-2)
+    - [Example](#example-3)
+  - [UnsupportedChainIdError](#unsupportedchainiderror)
+    - [Example](#example-4)
+- [Understanding Error Bubbling](#understanding-error-bubbling)
+
 ## Overview
 
 At a high level, `web3-starknet-react` is a state machine which ensures that certain key pieces of Starknet related data (the user's current account, account address, chainId, etc. ) relevant to your dApp are kept-up-to-date. To help with this, `web3-starknet-react` uses React's [Context](https://reactjs.org/docs/context.html) API to efficiently store this data, and inject it wherever you need it in your react app.
@@ -142,6 +163,10 @@ const starknetReactContext = getStarknetReactContext()
 
 // ...
 ```
+
+### UnsupportedChainIdError
+
+This is an error which can be used to inform users that they're connected to an unsupported network.
 
 #### Example
 
