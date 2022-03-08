@@ -2,7 +2,7 @@
 
 _A simple, maximally extensible, dependency minimized framework for building Starknet dApps_
 
-_Provides easy access to Starknet Interface all over the React App._
+_Provides easy access to Starknet Interface all over the React App. Inspired from_ [web3-react](https://github.com/NoahZinsmeister/web3-react/tree/v6)
 
 <br>
 
@@ -21,3 +21,23 @@ _Provides easy access to Starknet Interface all over the React App._
 | `@web3-starknet-react/types`              | [![npm version](https://img.shields.io/npm/v/@web3-starknet-react/types/latest.svg)](https://www.npmjs.com/package/@web3-starknet-react/types/v/latest)                           | [![minzip](https://img.shields.io/bundlephobia/minzip/@web3-starknet-react/types/latest.svg)](https://bundlephobia.com/result?p=@web3-starknet-react/types@latest)                           | Shared [TypeScript](https://www.typescriptlang.org/) Types             |
 
 ## [Documentation](docs)
+
+## Projects using `web3-starknet-react`
+
+_Open a PR to add your starknet project to the list_
+
+- [JediSwap](https://app.testnet.jediswap.xyz/#/swap)
+
+## Local Development
+
+- Clone repo \
+  `git clone https://github.com/dhruvkelawala/web3-starknet-react`
+
+- Install top-level dependencies \
+  `yarn`
+
+- Install sub-dependencies \
+  `yarn bootstrap`
+
+- Build and watch for changes \
+  `yarn start`
