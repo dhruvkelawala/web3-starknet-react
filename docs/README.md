@@ -83,7 +83,7 @@ key?: string
 import { useStarknetReact } from '@web3-starknet-react/core'
 
 function Component() {
-  const web3React = useStarknetReact()
+  const starknetReact = useStarknetReact()
   // ...
 }
 ```
