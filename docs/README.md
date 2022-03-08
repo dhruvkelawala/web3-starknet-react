@@ -4,24 +4,24 @@ At a high level, `web3-starknet-react` is a state machine which ensures that cer
 
 The data conforms to the following interface:
 
-```
+```typescript
 interface StarknetReactContextInterface<T = any> {
   activate: (
     connector: AbstractConnector,
     onError?: (error: Error | unknown) => void,
     throwsError?: boolean
-  ) => Promise<void>;
-  setError: (error: Error) => void;
-  deactivate: () => void;
+  ) => Promise<void>
+  setError: (error: Error) => void
+  deactivate: () => void
 
-  connector?: AbstractConnector;
-  library?: T;
-  chainId?: number;
-  account?: AccountInterface | null;
-  connectedAddress?: string | null;
+  connector?: AbstractConnector
+  library?: T
+  chainId?: number
+  account?: AccountInterface | null
+  connectedAddress?: string | null
 
-  active: boolean;
-  error?: Error;
+  active: boolean
+  error?: Error
 }
 ```
 
