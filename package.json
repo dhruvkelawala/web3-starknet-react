@@ -43,7 +43,7 @@
     "tsdx": "^0.11.0"
   },
   "dependencies": {
-    "starknet": "^3.4.0",
+    "starknet": "^3.5.0",
     "tiny-invariant": "^1.2.0",
     "tiny-warning": "^1.0.3"
   },
