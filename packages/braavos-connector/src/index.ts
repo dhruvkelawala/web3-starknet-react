@@ -24,13 +24,11 @@ export class BraavosConnector extends AbstractConnector {
     if (!window.starknet_braavos) {
       throw new NoStarknetProviderError();
     }
-    if (window.starknet_braavos?.on) {
-      window.starknet_braavos.on('accountsChanged', this.handleAccountsChanged);
-    }
 
     // const { ...provider } = this.starknet.signer;
 
-    let account: AccountInterface | undefined, connectedAddress;
+    let account: AccountInterface | undefined,
+      connectedAddress: string | undefined;
 
     // const isPreAuthorized = await window.starknet.isPreauthorized();
 
@@ -40,6 +38,13 @@ export class BraavosConnector extends AbstractConnector {
     if (!account) {
       [connectedAddress] = await window.starknet_braavos.enable();
       account = window.starknet_braavos.account;
+    }
+
+    if (window.starknet_braavos?.on) {
+      window.starknet_braavos.on(
+        'accountsChanged',
+        () => connectedAddress && this.handleAccountsChanged([connectedAddress])
+      );
     }
 
     return {
