@@ -5,7 +5,7 @@
   },
   "version": "1.2.1",
   "license": "MIT",
-  "author": "dhruvkelawala",
+  "author": "Dhruv Kelawala <dhruvrk2000@gmail.com>",
   "main": "dist/index.js",
   "module": "dist/braavos-connector.esm.js",
   "typings": "dist/index.d.ts",
@@ -15,8 +15,11 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test",
+    "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint"
+  },
+  "peerDependencies": {
+    "react": ">=16"
   },
   "husky": {
     "hooks": {
@@ -29,12 +32,9 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "devDependencies": {
-    "@types/jest": "^27.5.0",
-    "husky": "^7.0.4",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.4.0",
-    "typescript": "^4.6.4"
+  "dependencies": {
+    "@web3-starknet-react/abstract-connector": "^1.2.1",
+    "@web3-starknet-react/types": "^1.2.1"
   },
   "gitHead": "708fb8b485992912f6f80c4267bab8189711e6ae"
 }
