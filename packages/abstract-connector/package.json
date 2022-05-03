@@ -1,6 +1,6 @@
 {
   "name": "@web3-starknet-react/abstract-connector",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "publishConfig": {
     "access": "public"
   },
@@ -32,7 +32,7 @@
     "trailingComma": "es5"
   },
   "dependencies": {
-    "@web3-starknet-react/types": "^1.2.0"
+    "@web3-starknet-react/types": "^1.2.1"
   },
   "gitHead": "708fb8b485992912f6f80c4267bab8189711e6ae"
 }
