@@ -1,6 +1,6 @@
 {
   "name": "@web3-starknet-react/braavos-connector",
-  "version": "0.1.0",
+  "version": "1.2.0",
   "license": "MIT",
   "author": "dhruvkelawala",
   "main": "dist/index.js",
@@ -15,7 +15,6 @@
     "test": "tsdx test",
     "lint": "tsdx lint"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
