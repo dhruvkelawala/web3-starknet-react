@@ -1,4 +1,4 @@
-# `web3-react` Documentation - get-starknet-wallet
+# `web3-react` Documentation - Braavos
 
 - [Install](#install)
 - [Arguments](#arguments)
@@ -11,7 +11,7 @@
 
 ## Install
 
-`yarn add @web3-starknet-react/gsw-connector`
+`yarn add @web3-starknet-react/braavos-connector`
 
 ## Arguments
 
@@ -19,14 +19,12 @@
 supportedChainIds?: number[]
 ```
 
-**NOTE**: get-starknet-wallet is wallet agnostic.
-
 ## Example
 
 ```javascript
-import { GswConnector } from '@web3-starknet-react/gsw-connector'
+import { BraavosWallet } from '@web3-starknet-react/braavos-connector'
 
-const gsw = new GswConnector({ supportedChainIds: [5] })
+const wallet = new BraavosWallet({ supportedChainIds: [5] })
 ```
 
 ## Errors
@@ -36,7 +34,7 @@ const gsw = new GswConnector({ supportedChainIds: [5] })
 #### Example
 
 ```javascript
-import { NoStarknetProviderError } from '@web3-starknet-react/gsw-connector'
+import { NoStarknetProviderError } from '@web3-starknet-react/braavos-connector'
 
 function Component() {
   const { error } = useStarknetReact()

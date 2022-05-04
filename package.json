@@ -14,9 +14,7 @@
     "frontend",
     "dapp",
     "argentx",
-    "braavos",
-    "get-starknet-wallet",
-    "gsw"
+    "braavos"
   ],
   "author": "Dhruv Kelawala <dhruvrk2000@gmail.com>",
   "repository": {

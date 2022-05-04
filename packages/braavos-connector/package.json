@@ -1,12 +1,12 @@
 {
-  "name": "@web3-starknet-react/gsw-connector",
+  "name": "@web3-starknet-react/braavos-connector",
   "publishConfig": {
     "access": "public"
   },
   "version": "1.1.0",
-  "author": "avimak",
+  "author": "avimak@braavos.app",
   "main": "dist/index.js",
-  "module": "dist/gsw-connector.esm.js",
+  "module": "dist/braavos-connector.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
@@ -33,8 +33,10 @@
   },
   "dependencies": {
     "@web3-starknet-react/abstract-connector": "^1.1.0",
-    "@web3-starknet-react/types": "^1.1.0",
-    "get-starknet-wallet": "^0.0.6"
+    "@web3-starknet-react/types": "^1.1.0"
+  },
+  "devDependencies": {
+    "get-starknet": "^1.0.0"
   },
   "gitHead": "b893495a21b7d761d895aac9e89666875c315e7b"
 }

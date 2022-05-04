@@ -4513,10 +4513,10 @@ get-port@^4.2.0:
   resolved "https://registry.yarnpkg.com/get-port/-/get-port-4.2.0.tgz#e37368b1e863b7629c43c5a323625f95cf24b119"
   integrity sha512-/b3jarXkH8KJoOMQc3uVGHASwGLPq3gSFJ7tgJm2diza+bydJPTGOibin2steecKeOylE8oY2JERlVWkAJO6yw==
 
-get-starknet-wallet@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/get-starknet-wallet/-/get-starknet-wallet-0.0.6.tgz#2ad33a50743814af423c0743c4c8486851c844f2"
-  integrity sha512-7qDIVCg4zk54f4GDfAIMFlmozIV2i+rKj56XD6EVoxJDMHn8DUpMJjiYjm8/G4bOgeR2NqfZYePTxpDL3B4+5Q==
+get-starknet@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/get-starknet/-/get-starknet-1.0.0.tgz#42a14e598c880facf8e094c4b695a7278722eef2"
+  integrity sha512-LHeAfW8ubyHG6xwX5JtlYarzmGDrr4XucgfDytadJLQUEJDAfEfWqbGyeyjEH0SbIl+0w6TSNGnSqPyrbvnsdQ==
   dependencies:
     bowser "^2.11.0"
 

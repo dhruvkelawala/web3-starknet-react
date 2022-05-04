@@ -1,8 +1,7 @@
-import {AbstractConnector} from '@web3-starknet-react/abstract-connector';
-import {AbstractConnectorArguments, ConnectorUpdate,} from '@web3-starknet-react/types';
-import {AccountInterface} from 'starknet';
-import {connect} from 'get-starknet-wallet';
-import {IStarknetWindowObject} from "get-starknet-wallet/dist/types";
+import { AbstractConnector } from '@web3-starknet-react/abstract-connector';
+import { ConnectorUpdate } from '@web3-starknet-react/types';
+import { AccountInterface } from 'starknet';
+import { IStarknetWindowObject } from 'get-starknet';
 
 export class NoStarknetProviderError extends Error {
   public constructor() {
@@ -12,18 +11,9 @@ export class NoStarknetProviderError extends Error {
   }
 }
 
-export class GswConnector extends AbstractConnector {
-
-  wallet: IStarknetWindowObject | undefined = undefined;
-
-  constructor(kwargs: AbstractConnectorArguments) {
-    super(kwargs);
-
-    this.handleAccountsChanged = this.handleAccountsChanged.bind(this);
-  }
-
+export class BraavosConnector extends AbstractConnector {
   public async activate(): Promise<ConnectorUpdate> {
-    const wallet = this.wallet = await connect();
+    const wallet = this.getBraavosWallet();
 
     if (!wallet) {
       throw new NoStarknetProviderError();
@@ -31,12 +21,11 @@ export class GswConnector extends AbstractConnector {
 
     wallet.on('accountsChanged', this.handleAccountsChanged);
 
-
     let account: AccountInterface | undefined = wallet.account;
     let connectedAddress: string | undefined = wallet.selectedAddress;
 
     if (!account) {
-      [connectedAddress] = await wallet.enable();
+      [connectedAddress] = (await wallet.enable()) ?? [];
       account = wallet.account;
     }
 
@@ -48,7 +37,7 @@ export class GswConnector extends AbstractConnector {
     };
   }
 
-  private handleAccountsChanged(accountAddresses: string[]) {
+  private handleAccountsChanged = (accountAddresses: string[]) => {
     if (__DEV__) {
       console.log(
         "Handling 'accountsChanged' event with payload",
@@ -61,10 +50,10 @@ export class GswConnector extends AbstractConnector {
     } else {
       this.emitUpdate({ connectedAddress: accountAddresses[0] });
     }
-  }
+  };
 
   public async getProvider(): Promise<any> {
-    return this.wallet?.provider;
+    return this.getBraavosWallet()?.provider;
   }
 
   /**
@@ -76,7 +65,8 @@ export class GswConnector extends AbstractConnector {
   }
 
   public async getChainId(): Promise<string | number> {
-    if (!this.wallet) {
+    const wallet = this.getBraavosWallet();
+    if (!wallet) {
       throw new NoStarknetProviderError();
     }
 
@@ -85,28 +75,36 @@ export class GswConnector extends AbstractConnector {
   }
 
   public getAccount(): AccountInterface | undefined {
-    if (!this.wallet) {
+    const wallet = this.getBraavosWallet();
+    if (!wallet) {
       throw new NoStarknetProviderError();
     }
 
-    return this.wallet.account;
+    return wallet.account;
   }
 
   public getConnectedAddress(): string | null {
-    if (!this.wallet) {
+    const wallet = this.getBraavosWallet();
+    if (!wallet) {
       throw new NoStarknetProviderError();
     }
 
-    return this.wallet.selectedAddress || null;
+    return wallet.selectedAddress || null;
   }
 
   public deactivate(): void {
-    if (this.wallet) {
+    if (this.getBraavosWallet()) {
       this.handleAccountsChanged([]);
     }
   }
 
   public async isAuthorized(): Promise<boolean> {
-    return this.wallet?.isPreauthorized() ?? false;
+    const wallet = this.getBraavosWallet();
+    return wallet?.isPreauthorized() ?? false;
   }
+
+  private getBraavosWallet = (): IStarknetWindowObject | undefined =>
+    [window.starknet, window.starknet_braavos].find(
+      obj => obj?.id === 'braavos'
+    );
 }
