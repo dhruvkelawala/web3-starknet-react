@@ -35,7 +35,7 @@ export class BraavosConnector extends AbstractConnector {
     connectedAddress = window.starknet_braavos.selectedAddress;
     account = window.starknet_braavos.account;
 
-    if (!account) {
+    if (!connectedAddress) {
       [connectedAddress] = await window.starknet_braavos.enable();
       account = window.starknet_braavos.account;
     }
