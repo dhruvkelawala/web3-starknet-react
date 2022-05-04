@@ -24,7 +24,7 @@ export class BraavosConnector extends AbstractConnector {
     let account: AccountInterface | undefined = wallet.account;
     let connectedAddress: string | undefined = wallet.selectedAddress;
 
-    if (!account) {
+    if (!connectedAddress) {
       [connectedAddress] = (await wallet.enable()) ?? [];
       account = wallet.account;
     }
