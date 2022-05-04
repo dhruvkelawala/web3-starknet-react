@@ -13,7 +13,8 @@
     "starknet",
     "frontend",
     "dapp",
-    "argentx"
+    "argentx",
+    "braavos"
   ],
   "author": "Dhruv Kelawala <dhruvrk2000@gmail.com>",
   "repository": {
