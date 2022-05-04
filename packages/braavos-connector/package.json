@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.1.0",
+  "version": "2.0.0",
   "author": "avimak@braavos.app",
   "main": "dist/index.js",
   "module": "dist/braavos-connector.esm.js",
@@ -32,8 +32,8 @@
     "trailingComma": "es5"
   },
   "dependencies": {
-    "@web3-starknet-react/abstract-connector": "^1.1.0",
-    "@web3-starknet-react/types": "^1.1.0"
+    "@web3-starknet-react/abstract-connector": "^2.0.0",
+    "@web3-starknet-react/types": "^2.0.0"
   },
   "devDependencies": {
     "get-starknet": "^1.0.0"
