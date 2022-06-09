@@ -32,8 +32,8 @@
     "trailingComma": "es5"
   },
   "dependencies": {
-    "@web3-starknet-react/abstract-connector": "^2.0.0",
-    "@web3-starknet-react/types": "^2.0.0"
+    "@web3-starknet-react/abstract-connector": "^2.1.0",
+    "@web3-starknet-react/types": "^2.1.0"
   },
   "devDependencies": {
     "get-starknet": "^1.0.0"
