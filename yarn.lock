@@ -931,6 +931,18 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@ethersproject/bytes@^5.6.1":
+  version "5.6.1"
+  resolved "https://registry.yarnpkg.com/@ethersproject/bytes/-/bytes-5.6.1.tgz#24f916e411f82a8a60412344bf4a813b917eefe7"
+  integrity sha512-NwQt7cKn5+ZE4uDn+X5RAXLp46E1chXoaMmrxAyA0rblpxz8t58lVkrHXoRIn0lz1joQElQ8410GqhTqMOwc6g==
+  dependencies:
+    "@ethersproject/logger" "^5.6.0"
+
+"@ethersproject/logger@^5.6.0":
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/@ethersproject/logger/-/logger-5.6.0.tgz#d7db1bfcc22fd2e4ab574cba0bb6ad779a9a3e7a"
+  integrity sha512-BiBWllUROH9w+P21RzoxJKzqoqpkyM1pRnEKG69bulE9TSQD8SAIvTQqIMZmmCO8pUNkgLP1wndX1gKghSpBmg==
+
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@evocateur/libnpmaccess/-/libnpmaccess-3.1.2.tgz#ecf7f6ce6b004e9f942b098d92200be4a4b1c845"
@@ -2564,13 +2576,6 @@ axe-core@^4.3.5:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.4.1.tgz#7dbdc25989298f9ad006645cd396782443757413"
   integrity sha512-gd1kmb21kwNuWr6BQz8fv6GNECPBnUasepcoLbekws23NVBLODdsClRZ+bQ8+9Uomf3Sm3+Vwn0oYG9NvwnJCw==
 
-axios@^0.23.0:
-  version "0.23.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.23.0.tgz#b0fa5d0948a8d1d75e3d5635238b6c4625b05149"
-  integrity sha512-NmvAE4i0YAv5cKq8zlDoPd1VLKAqX5oLuZKs8xkJa4qi6RGn0uhCYFjWtHHC9EM/MwOwYWOs53W+V0aqEXq1sg==
-  dependencies:
-    follow-redirects "^1.14.4"
-
 axobject-query@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/axobject-query/-/axobject-query-2.2.0.tgz#943d47e10c0b704aa42275e20edf3722648989be"
@@ -3432,6 +3437,13 @@ cross-env@6.0.3:
   dependencies:
     cross-spawn "^7.0.0"
 
+cross-fetch@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.5.tgz#e1389f44d9e7ba767907f7af8454787952ab534f"
+  integrity sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==
+  dependencies:
+    node-fetch "2.6.7"
+
 cross-spawn@^6.0.0, cross-spawn@^6.0.5:
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
@@ -4257,6 +4269,11 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "2.1.1"
 
+fetch-intercept@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/fetch-intercept/-/fetch-intercept-2.4.0.tgz#be8b0f17abaadeea6de52ecdb6e9ed081f03480a"
+  integrity sha512-BPZ2LM9Dh1ua2ovQf03N6rhWg1qxdVD5qK/G4llvcemt6M+jjxCuIDxJ+6IiG+uz//3UQmgfKEv0gOGvYIxZ7g==
+
 figgy-pudding@^3.4.1, figgy-pudding@^3.5.1:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/figgy-pudding/-/figgy-pudding-3.5.2.tgz#b4eee8148abb01dcf1d1ac34367d59e12fa61d6e"
@@ -4363,11 +4380,6 @@ flush-write-stream@^1.0.0:
   dependencies:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
-
-follow-redirects@^1.14.4:
-  version "1.14.9"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.9.tgz#dd4ea157de7bfaf9ea9b3fbd85aa16951f78d8d7"
-  integrity sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==
 
 for-each@^0.3.3:
   version "0.3.3"
@@ -6628,7 +6640,7 @@ node-fetch-npm@^2.0.2:
     json-parse-better-errors "^1.0.0"
     safe-buffer "^5.1.1"
 
-node-fetch@^2.5.0, node-fetch@^2.6.7:
+node-fetch@2.6.7, node-fetch@^2.5.0, node-fetch@^2.6.7:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
   integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
@@ -8408,20 +8420,21 @@ stack-utils@^1.0.1:
   dependencies:
     escape-string-regexp "^2.0.0"
 
-starknet@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/starknet/-/starknet-3.5.1.tgz#b51fc89105235e14a71a576c60db5034e51d9734"
-  integrity sha512-iFmdx2FF16x1hItQysMVRvCQr2VYEp+WBfSk5c3VAyDI22HIa+5Zh3p9S6Q9YL2eLKJK8Ys/b2fRmeTPtnxHTw==
+starknet@^3.12.3:
+  version "3.12.3"
+  resolved "https://registry.yarnpkg.com/starknet/-/starknet-3.12.3.tgz#16c22f6c4597aa91fd2c887019d3fc56f6f73474"
+  integrity sha512-FmWC+AgeqgPkOnp0FXcg9q/T00vg02JGgqTyWvWJgB/9L9vYdkFfIbnkLwKbAdzzGrYr4iL9EE94ZXoosOYnAg==
   dependencies:
-    axios "^0.23.0"
+    "@ethersproject/bytes" "^5.6.1"
     bn.js "^5.2.0"
+    cross-fetch "^3.1.5"
     elliptic "^6.5.4"
     ethereum-cryptography "^0.2.0"
+    fetch-intercept "^2.4.0"
     hash.js "^1.1.7"
     json-bigint "^1.0.0"
     minimalistic-assert "^1.0.1"
     pako "^2.0.4"
-    superstruct "^0.15.3"
     url-join "^4.0.1"
 
 static-extend@^0.1.1:
@@ -8632,11 +8645,6 @@ strong-log-transformer@^2.0.0:
     duplexer "^0.1.1"
     minimist "^1.2.0"
     through "^2.3.4"
-
-superstruct@^0.15.3:
-  version "0.15.4"
-  resolved "https://registry.yarnpkg.com/superstruct/-/superstruct-0.15.4.tgz#e3381dd84ca07e704e19f69eda74eee1a5efb1f9"
-  integrity sha512-eOoMeSbP9ZJChNOm/9RYjE+F36rYR966AAqeG3xhQB02j2sfAUXDp4EQ/7bAOqnlJnuFDB8yvOu50SocvKpUEw==
 
 supports-color@^2.0.0:
   version "2.0.0"
